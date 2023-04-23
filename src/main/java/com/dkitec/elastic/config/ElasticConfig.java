@@ -1,4 +1,4 @@
-package com.dkitec.elastic;
+package com.dkitec.elastic.config;
 
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;
