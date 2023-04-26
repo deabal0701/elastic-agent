@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ElasticConfig {
 
-	  @Value("${spring.elasticsearch.rest.uris}")
+	  	@Value("${spring.elasticsearch.rest.uris}")
 	    private String elasticsearchUrl;
 
 	    @Bean
@@ -19,3 +19,5 @@ public class ElasticConfig {
 	        return new RestHighLevelClient(RestClient.builder(httpHost));
 	    }
 }
+
+
