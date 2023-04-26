@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.dkitec.elastic.entity.GatewayLogDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -17,9 +20,14 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 
+@Service
 public class InsertGatewayLog {
 
-    public static void insertGatewayLog(String json) throws IOException {
+	@Autowired
+	ElasticInserter elasticInserter;
+	
+	
+    public  void insertGatewayLog(String json) throws IOException {
         GatewayLogDTO log = parseJsonToGatewayLogDTO(json);
 
         
@@ -40,11 +48,11 @@ public class InsertGatewayLog {
       //      filterInfo.setCompleteTime(requestTime.plusSeconds(1));
       //  });
 
-        ElasticInserter inserter = new ElasticInserter();
+      //  ElasticInserter inserter = new ElasticInserter();
         
         String StrJson = convertGatewayLogDTOToJson(log);
         Map<String, Object> logMap = convertJsonToMap(StrJson);
-        inserter.insertGatewayLog(logMap);
+        elasticInserter.insertGatewayLog(logMap);
     }
 
     private static GatewayLogDTO parseJsonToGatewayLogDTO(String json) throws IOException {

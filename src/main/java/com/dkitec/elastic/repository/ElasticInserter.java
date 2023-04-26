@@ -11,8 +11,6 @@ import org.elasticsearch.common.xcontent.XContentFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dkitec.elastic.entity.GatewayLogDTO;
-
 @Service
 public class ElasticInserter {
 
@@ -27,31 +25,32 @@ public class ElasticInserter {
         restHighLevelClient.index(request, RequestOptions.DEFAULT);
     }
 
-    private XContentBuilder prepareXContentBuilder(GatewayLogDTO log) throws IOException {
+    private XContentBuilder prepareXContentBuilder(Map<String, Object> log) throws IOException {
         XContentBuilder builder = XContentFactory.jsonBuilder();
 
         builder.startObject();
         {
-            builder.field("routeInfo", log.getRouteInfo());
-            builder.field("clientInfo", log.getClientInfo());
-            builder.field("xKbGatewayCode", log.getXKbGatewayCode());
-            builder.field("filterInfoList", log.getFilterInfoList());
-            builder.field("apiServer", log.getApiServer());
-            builder.field("traceId", log.getTraceId());
-            builder.field("spanId", log.getSpanId());
-            builder.field("parentSpanId", log.getParentSpanId());
-            builder.field("traceStatus", log.getTraceStatus());
-            builder.field("traceStep", log.getTraceStep());
-            builder.field("httpStatusCode", log.getHttpStatusCode());
-            builder.field("elapsedTime", log.getElapsedTime());
-            builder.field("path", log.getPath());
-            builder.field("apiServerPath", log.getApiServerPath());
-            builder.field("gatewayConfig", log.getGatewayConfig());
-            builder.field("errorCode", log.getErrorCode());
+            builder.field("routeInfo", log.get("routeInfo"));
+            builder.field("clientInfo", log.get("clientInfo"));
+            builder.field("xKbGatewayCode", log.get("xKbGatewayCode"));
+            builder.field("filterInfoList", log.get("filterInfoList"));
+            builder.field("apiServer", log.get("apiServer"));
+            builder.field("traceId", log.get("traceId"));
+            builder.field("spanId", log.get("spanId"));
+            builder.field("parentSpanId", log.get("parentSpanId"));
+            builder.field("traceStatus", log.get("traceStatus"));
+            builder.field("traceStep", log.get("traceStep"));
+            builder.field("httpStatusCode", log.get("httpStatusCode"));
+            builder.field("elapsedTime", log.get("elapsedTime"));
+            builder.field("path", log.get("path"));
+            builder.field("apiServerPath", log.get("apiServerPath"));
+            builder.field("gatewayConfig", log.get("gatewayConfig"));
+            builder.field("errorCode", log.get("errorCode"));
         }
         builder.endObject();
 
         return builder;
     }
+    
 }
 
