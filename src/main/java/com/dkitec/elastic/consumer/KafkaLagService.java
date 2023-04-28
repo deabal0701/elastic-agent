@@ -28,7 +28,7 @@ public class KafkaLagService {
 	@Autowired
 	private AdminClient adminClient;
 
-	@Scheduled(fixedRate = 60000) // 1분마다 실행
+	@Scheduled(fixedRate = 6000000) // 1분마다 실행
 	public void printLagForConsumerGroup() {
 		try {
 			Set<String> topicSet = adminClient.listTopics().names().get();
