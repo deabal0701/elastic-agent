@@ -2,6 +2,8 @@ package com.kbstar.agent.collector.dto;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 import lombok.ToString;
 
@@ -11,6 +13,7 @@ public class GatewayLogDTO {
 
 	// 아래 명칭은 Camel Case 및 문맥에 맞게 변경하였으니 참고할것.
 	private String date;
+	@JsonProperty("log_level")
 	private String logLevel;
 	private String traceStep;
 	private String traceStatus;
@@ -20,6 +23,7 @@ public class GatewayLogDTO {
 	private String requestTime;
 	private String responseTime;
 	private long elapsedTime;
+	@JsonProperty("orgcode")
 	private String orgCode;
 	private String orgNm;
 	private int gwId;

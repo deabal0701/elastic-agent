@@ -11,7 +11,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import com.kbstar.agent.collector.LogCollectorApplication;
+import com.kbstar.agent.LogCollectorApplication;
 
 @Service
 public class DataHandler {
