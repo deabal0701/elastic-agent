@@ -1,4 +1,4 @@
-package com.dkitec.collector.dto;
+package com.kbstar.agent.collector.dto;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.common.serialization.Deserializer;

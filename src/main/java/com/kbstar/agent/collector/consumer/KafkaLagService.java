@@ -1,4 +1,4 @@
-package com.dkitec.collector.consumer;
+package com.kbstar.agent.collector.consumer;
 
 import java.util.Collections;
 import java.util.Map;

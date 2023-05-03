@@ -1,4 +1,4 @@
-package com.dkitec.collector.service;
+package com.kbstar.agent.collector.service;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dkitec.collector.utils.ExternlApiAdaptor;
+import com.kbstar.agent.collector.utils.ExternlApiAdaptor;
 
 @Service
 public class ExternalDataService {

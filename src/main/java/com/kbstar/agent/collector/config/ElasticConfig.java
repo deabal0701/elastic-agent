@@ -1,4 +1,4 @@
-package com.dkitec.collector.config;
+package com.kbstar.agent.collector.config;
 
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;

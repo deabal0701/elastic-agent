@@ -1,4 +1,4 @@
-package com.dkitec.collector.producer;
+package com.kbstar.agent.collector.producer;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -11,7 +11,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import com.dkitec.collector.dto.GatewayLogDTO;
+import com.kbstar.agent.collector.dto.GatewayLogDTO;
 
 // Consumer 테스트 위해 작성(추후 삭제)
 @Service

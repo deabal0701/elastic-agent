@@ -1,4 +1,4 @@
-package com.dkitec.collector.exception;
+package com.kbstar.agent.collector.exception;
 
 public class GatewayLogDTOException extends RuntimeException {
 

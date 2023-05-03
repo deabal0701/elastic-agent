@@ -16,7 +16,7 @@ spring:
       bootstrap-servers: 49.247.150.72:9092,49.247.150.72:9092,49.247.150.72:9092
       group-id: gateway-log-group
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: com.dkitec.collector.dto.GatewayLogDTODeserializer
+      value-deserializer: com.kbstar.agent.collector.dto.GatewayLogDTODeserializer
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer

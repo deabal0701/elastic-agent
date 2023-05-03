@@ -1,4 +1,4 @@
-package com.dkitec.collector;
+package com.kbstar.agent.collector;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

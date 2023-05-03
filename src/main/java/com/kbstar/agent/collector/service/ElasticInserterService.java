@@ -1,4 +1,4 @@
-package com.dkitec.collector.service;
+package com.kbstar.agent.collector.service;
 
 import java.io.IOException;
 
@@ -8,8 +8,8 @@ import org.elasticsearch.common.xcontent.XContentFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dkitec.collector.dto.GatewayLogDTO;
-import com.dkitec.collector.repository.ElasticInserterRepository;
+import com.kbstar.agent.collector.dto.GatewayLogDTO;
+import com.kbstar.agent.collector.repository.ElasticInserterRepository;
 
 @Service
 public class ElasticInserterService {

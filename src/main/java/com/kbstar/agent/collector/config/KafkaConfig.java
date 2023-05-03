@@ -1,4 +1,4 @@
-package com.dkitec.collector.config;
+package com.kbstar.agent.collector.config;
 
 import java.util.HashMap;
 import java.util.Map;

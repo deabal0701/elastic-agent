@@ -1,4 +1,4 @@
-package com.dkitec.collector.utils;
+package com.kbstar.agent.collector.utils;
 
 import java.net.URI;
 import java.util.Iterator;

@@ -1,4 +1,4 @@
-package com.dkitec.collector.consumer;
+package com.kbstar.agent.collector.consumer;
 
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -8,9 +8,9 @@ import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.stereotype.Service;
 
-import com.dkitec.collector.dto.GatewayLogDTO;
-import com.dkitec.collector.exception.GatewayLogDTOException;
-import com.dkitec.collector.service.ElasticInserterService;
+import com.kbstar.agent.collector.dto.GatewayLogDTO;
+import com.kbstar.agent.collector.exception.GatewayLogDTOException;
+import com.kbstar.agent.collector.service.ElasticInserterService;
 
 @Service
 public class GatewayLogKafkaConsumer {

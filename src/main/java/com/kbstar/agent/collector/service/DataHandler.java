@@ -1,4 +1,4 @@
-package com.dkitec.collector.service;
+package com.kbstar.agent.collector.service;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import com.dkitec.collector.LogCollectorApplication;
+import com.kbstar.agent.collector.LogCollectorApplication;
 
 @Service
 public class DataHandler {

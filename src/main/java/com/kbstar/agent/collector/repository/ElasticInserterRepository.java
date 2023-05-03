@@ -1,4 +1,4 @@
-package com.dkitec.collector.repository;
+package com.kbstar.agent.collector.repository;
 
 import java.io.IOException;
 

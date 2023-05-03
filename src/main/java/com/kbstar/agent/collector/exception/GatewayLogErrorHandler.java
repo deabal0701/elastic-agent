@@ -1,4 +1,4 @@
-package com.dkitec.collector.exception;
+package com.kbstar.agent.collector.exception;
 
 import org.springframework.kafka.listener.ErrorHandler;
 import org.springframework.kafka.listener.KafkaListenerErrorHandler;

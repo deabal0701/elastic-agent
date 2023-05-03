@@ -1,4 +1,4 @@
-package com.dkitec.collector.dto;
+package com.kbstar.agent.collector.dto;
 
 import java.util.List;
 
