@@ -28,6 +28,7 @@ public class GatewayLogKafkaConsumer {
                 throw new GatewayLogDTOException("Error occurred in GatewayLog");
             }
             
+            //Elastic 서치가 종료되어있을때 처리방안(offset조정등 방안)
             elasticInserterService.insertGatewayLog(gatewayLogDTO);
             System.out.println("<=========================================[received]");
             System.out.println("Received GatewayLogDTO: " + gatewayLogDTO.toString());

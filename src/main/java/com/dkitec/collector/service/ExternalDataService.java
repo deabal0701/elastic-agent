@@ -21,7 +21,7 @@ public class ExternalDataService {
         //Map<String,Map<String, Object>> data =  externlApiAdaptor.get("/url", Map.class);
         
     	
-        // 위의 코드 완료되면 아래 코드 삭제 
+        // 위의 코드 완료되면 아래 코드 삭제 (임시데이터 생성 - 테스트용)
     	Map<String,Map<String, Object>> data = new HashMap<>();
         Map<String, Object> orgData = new HashMap<>();
         Map<String, Object> gwData = new HashMap<>();
