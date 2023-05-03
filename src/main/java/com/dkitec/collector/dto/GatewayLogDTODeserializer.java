@@ -16,6 +16,7 @@ public class GatewayLogDTODeserializer implements Deserializer<GatewayLogDTO> {
     @Override
     public GatewayLogDTO deserialize(String topic, byte[] data) {
         if (data == null) {
+        	//데이터가 null이 발생한 경우(처리방안)
             return null;
         }
 

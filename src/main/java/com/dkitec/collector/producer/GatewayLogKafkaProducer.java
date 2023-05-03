@@ -20,8 +20,12 @@ public class GatewayLogKafkaProducer {
 	@Autowired
 	private KafkaTemplate<String, GatewayLogDTO> kafkaTemplate;
 
+	// Topic 정의 필요
 	public void send(GatewayLogDTO gatewayLogDTO) {
 		kafkaTemplate.send("gateway-log-topic", gatewayLogDTO);
+		
+		//키를 지정하는 경우 (메시지를 특정 파티션에 지정시키기 위한 키 지정 여부)
+	    //kafkaTemplate.send("gateway-log-topic", "Key1", gatewayLogDTO);
 	}
 
 	// 테스트로 작성함. 

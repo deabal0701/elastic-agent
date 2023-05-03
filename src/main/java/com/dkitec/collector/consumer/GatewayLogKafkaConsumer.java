@@ -1,5 +1,6 @@
 package com.dkitec.collector.consumer;
 
+import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -17,9 +18,9 @@ public class GatewayLogKafkaConsumer {
 	@Autowired
 	ElasticInserterService elasticInserterService;
 
-    @KafkaListener(topics = "gateway-log-topic", groupId = "gateway-log-group", errorHandler = "gatewayLogErrorHandler")
+    @KafkaListener(topics = "gateway-log-topic", errorHandler = "gatewayLogErrorHandler")
     public void listen(ConsumerRecord<String, GatewayLogDTO> record, @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition,
-                       @Header(KafkaHeaders.OFFSET) long offset) {
+                       @Header(KafkaHeaders.OFFSET) long offset,Consumer<String, GatewayLogDTO> consumer) {
         try {
             GatewayLogDTO gatewayLogDTO = record.value();
             if (gatewayLogDTO == null) {
@@ -31,9 +32,10 @@ public class GatewayLogKafkaConsumer {
             //Elastic 서치가 종료되어있을때 처리방안(offset조정등 방안)
             elasticInserterService.insertGatewayLog(gatewayLogDTO);
             System.out.println("<=========================================[received]");
-            System.out.println("Received GatewayLogDTO: " + gatewayLogDTO.toString());
-            System.out.println("Partition: " + partition);
-            System.out.println("Offset: " + offset);
+            System.out.println("Received GatewayLogDTO: " + gatewayLogDTO.toString()); //수신 확인
+            System.out.println("Partition: " + partition); //파티션 확인
+            System.out.println("GroupId: " + consumer.groupMetadata().groupId()); // Consumer Group ID
+            System.out.println("Offset: " + offset); //Offset확인
             
         } catch (GatewayLogDTOException e) {
             System.err.println("Error occurred while processing GatewayLogDTO: " + e.getMessage());

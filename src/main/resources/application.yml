@@ -1,6 +1,8 @@
+## 개발/운영/스테이징/common구분하여 properties를 설정해야한다.
 server:
   port: 8102
-
+  servlet:
+    application-display-name: log-collector
 
 spring:
   application:
@@ -12,7 +14,7 @@ spring:
     consumer:
       auto-offset-reset: earliest
       bootstrap-servers: 49.247.150.72:9092,49.247.150.72:9092,49.247.150.72:9092
-      group-id: gateway-log-collector-group1  
+      group-id: gateway-log-group
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: com.dkitec.collector.dto.GatewayLogDTODeserializer
     producer:
@@ -37,8 +39,7 @@ logging:
   file:
     max-history: 10
     max-size: 10MB
-    name: log-collector
-    path: /logs
+    name: D:\\logs\\log-collector
     total-size-cap: 100MB
   level:
     com:
