@@ -1,4 +1,4 @@
-package com.kbstar.agent.search.repository;
+package com.kbstar.agent.search.logs.repository;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -57,4 +57,37 @@ public class LogRepository {
 
         return logs;
     }
+    
+  
+    public List<SearchHit> searchHit(String traceId, String dateFrom, String dateTo) {
+        SearchRequest searchRequest = new SearchRequest("gateway_logs");
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+
+        BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
+
+        if (traceId != null && !traceId.isEmpty()) {
+            boolQueryBuilder.must(QueryBuilders.termQuery("traceId", traceId));
+        }
+
+        if (dateFrom != null && !dateFrom.isEmpty() && dateTo != null && !dateTo.isEmpty()) {
+            boolQueryBuilder.must(QueryBuilders.rangeQuery("date").from(dateFrom).to(dateTo));
+        }
+
+        searchSourceBuilder.size(20);  // default 는 매치된 doc 중 상위 10 이지만 지정 할 수도 있다.  
+        searchSourceBuilder.query(boolQueryBuilder);
+        searchRequest.source(searchSourceBuilder);
+
+        List<SearchHit> searchHits = new ArrayList<>();
+        try {
+            SearchResponse searchResponse = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+            for (SearchHit hit : searchResponse.getHits().getHits()) {
+                searchHits.add(hit);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return searchHits;
+    }
+
 }

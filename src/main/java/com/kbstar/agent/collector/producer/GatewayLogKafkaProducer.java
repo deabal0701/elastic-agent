@@ -29,7 +29,7 @@ public class GatewayLogKafkaProducer {
 	}
 
 	// 테스트로 작성함. 
-	@Scheduled(fixedRate = 100000) 
+	@Scheduled(fixedRate = 1000000) 
 	public void sendSampleData() {
 		GatewayLogDTO gatewayLogDTO = createSampleGatewayLogDTO();
 		System.out.println("========================================>\n");
