@@ -1,7 +1,11 @@
 package com.kbstar.agent.collector.consumer;
 
+import java.util.Collections;
+
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.OffsetAndMetadata;
+import org.apache.kafka.common.TopicPartition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.KafkaHeaders;
@@ -31,6 +35,10 @@ public class GatewayLogKafkaConsumer {
             
 	            //Elastic 서치가 종료되어있을때 처리방안(offset조정등 방안)
 	            elasticInserterService.insertGatewayLog(gatewayLogDTO);
+	            
+	            // 수동으로 오프셋 커밋
+	            consumer.commitSync();
+	            
 	            System.out.println("<=========================================[received]");
 	            System.out.println("Received GatewayLogDTO: " + gatewayLogDTO.toString()); //수신 확인
 	            System.out.println("Partition: " + partition); //파티션 확인
