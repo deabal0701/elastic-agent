@@ -1,4 +1,3 @@
-## 개발/운영/스테이징/common구분하여 properties를 설정해야한다.
 server:
   port: 8102
   servlet:
@@ -7,14 +6,10 @@ server:
 spring:
   application:
     name: log-collector
-  elasticsearch:
-    uris: http://49.247.150.72:9200
   kafka:
-    bootstrap-servers: 49.247.150.72:9092,49.247.150.72:9092,49.247.150.72:9092
     consumer:
       auto-offset-reset: earliest
       enable-auto-commit: false
-      bootstrap-servers: 49.247.150.72:9092,49.247.150.72:9092,49.247.150.72:9092
       group-id: gateway-log-group
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: com.kbstar.agent.collector.dto.GatewayLogDTODeserializer
@@ -22,15 +17,11 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
-
 datahandler:
   load:
     interval:
       millis: 10000
 
-xxx:
-  system:
-    url: http://localhost:8080
 xxxx:
   apikey: ssfyfifs-iihj-sdjf-asss-efoisdfijsjdf
   system:
@@ -43,15 +34,40 @@ logging:
     name: D:\\logs\\log-collector
     total-size-cap: 100MB
   level:
+    root: WARN
     com:
-      example: DEBUG
-    javax:
-      management: ERROR
+      kbstar: DEBUG
     org:
       springframework: INFO
-    root: WARN
-    sun:
-      rmi: ERROR
+   
   pattern:
     console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n'
     file: '%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{15} - %msg%n'
+---
+
+spring:
+  profiles: local
+  elasticsearch:
+    uris: http://49.247.150.72:9200
+  kafka:
+    bootstrap-servers: 49.247.150.72:9092, 49.247.150.72:9092, 49.247.150.72:9092
+    consumer:
+      bootstrap-servers: 49.247.150.72:9092, 49.247.150.72:9092, 49.247.150.72:9092
+  xxx:
+    system:
+      url: http://localhost:8080
+---
+
+spring:
+  profiles: dev
+  elasticsearch:
+    uris: http://dev-elasticsearch-server:9200
+  kafka:
+    bootstrap-servers: dev-kafka-server:9092,dev-kafka-server:9092,dev-kafka-server:9092
+    consumer:
+      bootstrap-servers: dev-kafka-server:9092,dev-kafka-server:9092,dev-kafka-server:9092
+  xxx:
+    system:
+      url: http://dev-system-url:8080
+
+
